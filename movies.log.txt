@@ -1,0 +1,64 @@
+-laravel new movies
+-composer require laravel/ui
+-php artisan ui bootstrap --auth
+-npm install
+-npm run dev
+-php artisan migrate
+
+-create file navbar.blade.php into the views folder
+-alter file app.blade.php only left font,css and scripts include
+-in body element include navbar, and in div class container @yield('content')
+
+-php artisan make:model Movies -mcr
+
+-add route in routes/web.php for movies index page
+-in navbar add link to controller function index()
+-in controllers function index add return view('movies.index')
+
+-in navbar add link to controllers create function
+-add route to point to controllers create function
+-in controllers create function add return view('movies.create') which
+should show page with form for new movie
+
+-in Movie model add fillable array
+-in movie.store page add form for new movie
+-add route which points to store controller
+-in store function validate request in validate method, than create 
+movie object,and save to the database,and if successful redirect to index page.
+
+-php artisan migrate creates movie table in database 
+
+-in index controller method get movies from database using eloquent and
+send to index page using compact method
+
+-create file edit.blade.php for editing movies 
+-create file show.blade.php for showing single film details
+
+-Route::resource('/movies', MovieController::class);
+add all routes for Movie Controller,dont forget to use MOvieController
+
+
+-php artisan make:Model Comment -mcr
+make model for coments
+
+
+-Route::post('/movies/{movie}/comments', [App\Http\Controllers\CommentController::class, 'store']);
+route for storing comments
+
+-in comments migration add fields
+$table->integer('movie_id')->unsigned()
+$table->foreign('movie_id')->references('id')->on('movies')->odDelete('cascade');
+
+-in comment model add fillable atributes
+add public function named movies which returns belongs to one to many relationship
+
+-in movie model add public function comments which returns hasMany one to many relatioship
+
+-run php artisan mirate,restart server
+
+
+
+
+
+
+
