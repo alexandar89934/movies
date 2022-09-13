@@ -26,9 +26,16 @@
                        <p>{{    Str::limit($movie->storyline,80,'...' ) }}</p>
                     @endforeach
                 </ul>
-
+                {{ $movies->links() }} 
             </div>
+            
+           
+         
+      
         </div>
+       
     </div>
+
 </div>
+
 @endsection
